@@ -5,8 +5,7 @@ import Practice1.Task1.Model.NumberSystem;
 public class View {
 
     public static final String WRONG_INPUT_INT_DATA="Wrong input. Repeat please.";
-    public static final String CONDITION =
-            "Convert to all number systems      -  0\n"+
+    public static final String CONDITION ="Convert to all number systems      -  0\n"+
             "Convert to binary(base 2) system   -  2\n" +
             "Convert to octal (base 8)          -  8\n" +
             "Convert to hexadecimal(base 16) system - 16\n>>";
