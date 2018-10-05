@@ -8,15 +8,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
 
-        /*   COMPACT FORM
-        for (int i= input,leng = input,other= input,temp = 0; i >0; i--,other--,leng++, temp=0) {
-            //int temp = 0;
-            for (int j = 1; j <=leng; j++) {
-                System.out.print((j<other)?" ":(j<=input)?++temp:--temp);
-            }
-            System.out.println();
-        }
-*/
 
         for (int i= input,leng = input,other= input; i >0; i--,other--,leng++) {
             int temp = 0;
@@ -32,5 +23,15 @@ public class Main {
             }
             System.out.println();
         }
+
+        /*   COMPACT FORM
+        for (int i= input,leng = input,other= input,temp = 0; i >0; i--,other--,leng++, temp=0) {
+            //int temp = 0;
+            for (int j = 1; j <=leng; j++) {
+                System.out.print((j<other)?" ":(j<=input)?++temp:--temp);
+            }
+            System.out.println();
+        }
+*/
     }
 }
