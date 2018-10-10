@@ -68,4 +68,8 @@ public class ShapeController {
         if (v < 0) view.printMessage("No shapes\n\n");
         else view.printResult(view.SUM_OF_THE_AREAS_A_CERTAIN_COLOR + " - " + s, v);
     }
+    public static void main(String[] args) {
+        new ShapeController(new Shapes(), new ShapeView()).run();
+    }
+
 }

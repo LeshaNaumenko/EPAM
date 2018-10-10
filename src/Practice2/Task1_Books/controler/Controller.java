@@ -61,6 +61,7 @@ public class Controller {
                 view.printMessage(view.WRONG_INPUT_INT_DATA+"\n");
                 scanner.next();
             }
+
         }
     }
 
