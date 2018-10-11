@@ -21,34 +21,29 @@ public class Main {
     }
 
     private static int[][] turnedOn90DegreesToTheLeft(int[][] myArray) {
-
-            int temp3=0;
-            int ln;
-        for (int i = 0, i2=0, myLength =myArray.length-1; i <=myArray.length/2; i++, i2++, myLength--) {
-            temp3=i2;
+        int temp3;
+        int ln;
+        for (int i = 0, i2 = 0, myLength = myArray.length - 1; i <= myArray.length / 2; i++, i2++, myLength--) {
+            temp3 = i2;
             ln = myLength;
-            for (int j = temp3,myLength2 = ln; j <myLength; j++, myLength2-- ) {
-
-
+            for (int j = temp3, myLength2 = ln; j < myLength; j++, myLength2--) {
                 int temp = myArray[i2][j];
                 int temp2 = myArray[myLength2][i2];
                 myArray[i2][j] = myArray[j][myLength];
-                myArray[j][myLength2]=myArray[myLength][myLength2];
-                myArray[myLength2][temp3]= temp;
+                myArray[j][myLength] = myArray[myLength][myLength2];
+                myArray[myLength2][temp3] = temp;
                 myArray[myLength][myLength2] = temp2;
             }
-
         }
-            return myArray;
+        return myArray;
 
     }
 
     public static void printMatrix(int[][] myArray) {
         for (int i = 0; i < myArray.length; i++) {
             for (int j = 0; j < myArray.length; j++) {
-                System.out.print(myArray[i][j]+" ");
+                System.out.print(myArray[i][j] + " ");
             }
-
             System.out.println();
         }
     }
@@ -58,7 +53,6 @@ public class Main {
             for (int j = 0; j < myArray.length; j++) {
                 myArray[i][j] = i;
             }
-            System.out.println();
         }
         return myArray;
     }
