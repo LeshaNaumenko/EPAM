@@ -23,7 +23,7 @@ public class ShapeController {
             view.printMessage(
                     "Origin shape array                     -       press 1\n" +
                             "Sum of the areas                       -       press 2\n" +
-                            "Sum of the areas a certain color       -       press 3\n" +
+                            "Sum of the areas a certain shape       -       press 3\n" +
                             "Sort shapes by area                    -       press 4\n" +
                             "Sort shapes by color                   -       press 5\n" +
                             "Exit                                   -       press 0\n"
@@ -42,7 +42,7 @@ public class ShapeController {
                         scanner = new Scanner(System.in);
                         view.printMessage(">>");
                         String s = scanner.nextLine();
-                        getSumOfTheAreasACertainColor(s);
+                        getSumOfTheAreasACertainShape(s);
                         continue;
                     case 4:
                         view.printShapesWithArea("Sort by area", model.getOrderedShapeByArea());
@@ -63,7 +63,7 @@ public class ShapeController {
         }
     }
 
-    private void getSumOfTheAreasACertainColor(String s) {
+    private void getSumOfTheAreasACertainShape(String s) {
         double v = model.sumOfTheAreasACertainShape(s);
         if (v == 0) view.printMessage("No shapes\n\n");
         else view.printResult(view.SUM_OF_THE_AREAS_A_CERTAIN_SHAPE + " - " + s, v);

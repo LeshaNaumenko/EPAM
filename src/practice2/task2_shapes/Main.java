@@ -6,6 +6,8 @@ import practice2.task2_shapes.view.ShapeView;
 
 public class Main {
     public static void main(String[] args) {
+
         new ShapeController(new Shapes(), new ShapeView()).run();
     }
+
 }
