@@ -1,10 +1,9 @@
 package practice2.task2_shapes.model;
 
-import practice2.task2_shapes.model.comparator.ShapeAreaComparator;
-import practice2.task2_shapes.model.comparator.ShapeColorComparator;
 import practice2.task2_shapes.model.entity.Shape;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Shapes {
 
@@ -38,13 +37,23 @@ public class Shapes {
 
     public Shape[] getOrderedShapeByArea() {
         Shape[] temp = Arrays.copyOf(this.shapes, shapes.length);
-        Arrays.sort(temp, new ShapeAreaComparator());
+        Arrays.sort(temp, new Comparator<Shape>() {
+            @Override
+            public int compare(Shape o1, Shape o2) {
+                return Double.compare(o1.calcArea(), o2.calcArea());
+            }
+        });
         return temp;
     }
 
     public Shape[] getOrderedShapeByColor() {
         Shape[] temp = Arrays.copyOf(this.shapes, shapes.length);
-        Arrays.sort(temp, new ShapeColorComparator());
+        Arrays.sort(temp, new Comparator<Shape>() {
+            @Override
+            public int compare(Shape o1, Shape o2) {
+                return o1.getShapeColor().compareTo(o2.getShapeColor());
+            }
+        });
         return temp;
     }
 

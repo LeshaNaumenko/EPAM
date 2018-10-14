@@ -11,9 +11,9 @@ public class InputUtility {
 
         int number;
         do {
-            view.printMessage(view.INPUT_INT_DATA);
+            view.printMessage(View.INPUT_INT_DATA);
             while (!scanner.hasNextInt()) {
-                view.printMessage(view.WRONG_INPUT_INT_DATA + "\n" + view.INPUT_INT_DATA);
+                view.printMessage(View.WRONG_INPUT_INT_DATA + "\n" + View.INPUT_INT_DATA);
                 scanner.next();
             }
             number = scanner.nextInt();
@@ -23,29 +23,21 @@ public class InputUtility {
 
     public static int getValueOfConditionWithScanner(View view) {
 
-        view.printMessage(view.CONDITION);
+        view.printMessage(View.CONDITION);
         while (true) {
             if (scanner.hasNextInt()) {
                 int valueInt = scanner.nextInt();
-                if (valueInt == 0) {
-                    return 0;
-                } else {
-                    if (valueInt == 2) {
-                        return 2;
-                    } else {
-                        if (valueInt == 8) {
-                            return 8;
-                        } else {
-                            if (valueInt == 16) {
-                                return 16;
-                            } else {
-                                view.printMessage(view.WRONG_INPUT_INT_DATA + "\n" + view.CONDITION);
-                            }
-                        }
-                    }
+
+                switch (valueInt){
+                    case 0:return 0;
+                    case 2:return 2;
+                    case 8:return 8;
+                    case 16:return 16;
+                    default: view.printMessage(View.WRONG_INPUT_INT_DATA + "\n" + View.CONDITION);
                 }
+
             } else {
-                view.printMessage(view.WRONG_INPUT_INT_DATA + "\n" + view.CONDITION);
+                view.printMessage(View.WRONG_INPUT_INT_DATA + "\n" + View.CONDITION);
                 scanner.next();
             }
         }

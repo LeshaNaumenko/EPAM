@@ -1,10 +1,10 @@
 package practice2.task1_books.model;
 
 
-import practice2.task1_books.model.comparator.BookPublisherComparator;
 import practice2.task1_books.model.entity.Book;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Books {
     private Book[] books;
@@ -52,7 +52,12 @@ public class Books {
 
     public Book[] getOrderedBooksByPublisher() {
         Book[] temp = Arrays.copyOf(books, books.length);
-        Arrays.sort(temp, new BookPublisherComparator());
+        Arrays.sort(temp, new Comparator<Book>() {
+            @Override
+            public int compare(Book o1, Book o2) {
+                return o1.getPublisher().compareTo(o2.getPublisher());
+            }
+        });
         return temp;
     }
 

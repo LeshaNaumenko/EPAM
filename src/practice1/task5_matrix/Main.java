@@ -14,6 +14,7 @@ public class Main {
         myArray = fill(myArray);
         printMatrix(myArray);
 
+        System.out.println("============");
         turnedOn90DegreesToTheLeft(myArray);
         System.out.println();
         printMatrix(myArray);
@@ -39,6 +40,15 @@ public class Main {
 
     }
 
+    public static void printMatrix(int[][] myArray){
+        for (int[] ints : myArray) {
+            for (int anInt : ints) {
+                System.out.print(anInt+" ");
+            }
+            System.out.println();
+        }
+    }
+   /*
     public static void printMatrix(int[][] myArray) {
         for (int i = 0; i < myArray.length; i++) {
             for (int j = 0; j < myArray.length; j++) {
@@ -46,13 +56,15 @@ public class Main {
             }
             System.out.println();
         }
-    }
+    }*/
 
     public static int[][] fill(int[][] myArray) {
         for (int i = 0; i < myArray.length; i++) {
             for (int j = 0; j < myArray.length; j++) {
                 myArray[i][j] = i;
+                System.out.print(myArray[i][j]+" ");
             }
+            System.out.println();
         }
         return myArray;
     }

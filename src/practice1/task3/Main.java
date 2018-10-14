@@ -6,18 +6,32 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        int input = scanner.nextInt();
-        for (int i= input,leng = input,other= input; i >0; i--,other--,leng++) {
+        int input;
+
+        while (true) {
+            System.out.println("Enter a positive number");
+            System.out.print(">>");
+            if (!scanner.hasNextInt()) {
+                System.out.println("**Repeat please**");
+                scanner.next();
+                continue;
+            }
+            input = scanner.nextInt();
+
+            if (input <= 0 || input > 9) {
+                System.out.println("**Repeat please**");
+                continue;
+            }
+            break;
+        }
+        for (int i = input, leng = input, other = input; i > 0; i--, other--, leng++) {
             int temp = 0;
-            for (int j = 1; j <=leng; j++) {
-                if (j<other){
-                System.out.print(" ");
-                }else {
-                    if (j<=input){
-                        System.out.print(++temp);
-                    }else
-                        System.out.print(--temp);
-                }
+            for (int j = 1; j <= leng; j++) {
+                if (j < other)
+                    System.out.print(" ");
+                else if (j <= input)
+                    System.out.print(++temp);
+                else System.out.print(--temp);
             }
             System.out.println();
         }

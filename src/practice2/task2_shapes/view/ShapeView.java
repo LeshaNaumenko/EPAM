@@ -2,6 +2,9 @@ package practice2.task2_shapes.view;
 
 import practice2.task2_shapes.model.entity.Shape;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class ShapeView {
     public static final String WRONG_INPUT_INT_DATA = "Wrong input. Repeat please.";
     public static final String SUM_OF_THE_AREAS = "Sum of the areas";
