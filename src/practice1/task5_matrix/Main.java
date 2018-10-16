@@ -1,71 +1,18 @@
 package practice1.task5_matrix;
 
+import practice1.task5_matrix.controller.Controller;
+import practice1.task5_matrix.model.Model;
+import practice1.task5_matrix.view.View;
+
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter a size of the matrix:");
-        int input = scanner.nextInt();
-        int[][] myArray = new int[input][input];
-
-        myArray = fill(myArray);
-        printMatrix(myArray);
-
-        System.out.println("============");
-        turnedOn90DegreesToTheLeft(myArray);
-        System.out.println();
-        printMatrix(myArray);
+        new Controller(new Model(), new View()).run();
 
     }
 
-    private static int[][] turnedOn90DegreesToTheLeft(int[][] myArray) {
-        int temp3;
-        int ln;
-        for (int i = 0, i2 = 0, myLength = myArray.length - 1; i <= myArray.length / 2; i++, i2++, myLength--) {
-            temp3 = i2;
-            ln = myLength;
-            for (int j = temp3, myLength2 = ln; j < myLength; j++, myLength2--) {
-                int temp = myArray[i2][j];
-                int temp2 = myArray[myLength2][i2];
-                myArray[i2][j] = myArray[j][myLength];
-                myArray[j][myLength] = myArray[myLength][myLength2];
-                myArray[myLength2][temp3] = temp;
-                myArray[myLength][myLength2] = temp2;
-            }
-        }
-        return myArray;
 
-    }
 
-    public static void printMatrix(int[][] myArray){
-        for (int[] ints : myArray) {
-            for (int anInt : ints) {
-                System.out.print(anInt+" ");
-            }
-            System.out.println();
-        }
-    }
-   /*
-    public static void printMatrix(int[][] myArray) {
-        for (int i = 0; i < myArray.length; i++) {
-            for (int j = 0; j < myArray.length; j++) {
-                System.out.print(myArray[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }*/
-
-    public static int[][] fill(int[][] myArray) {
-        for (int i = 0; i < myArray.length; i++) {
-            for (int j = 0; j < myArray.length; j++) {
-                myArray[i][j] = i;
-                System.out.print(myArray[i][j]+" ");
-            }
-            System.out.println();
-        }
-        return myArray;
-    }
 }
