@@ -1,14 +1,28 @@
 package practice3.task3.myenum;
 
 
-public abstract class myEnum implements Comparable {
+import java.lang.reflect.Field;
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public abstract class MyEnum implements Comparable {
+
+    public static void main(String[] args) {
+        Months.values();
+    }
+
+    protected static Map<Integer, MyEnum> states = new LinkedHashMap<>();
     private static int counter;
     private final String name;
-    private final int index;
+    protected final int index = counter++;;
 
-    protected myEnum(String input) {
+    protected MyEnum(String input) {
         name = input;
-        index = counter++;
+    }
+
+    public static Collection<MyEnum> values(){
+        return states.values();
     }
 
     public final String name() {
@@ -33,13 +47,16 @@ public abstract class myEnum implements Comparable {
         return this==other;
     }
 
+/*    public static MyEnum[] values(){
+        return null;
+    }*/
     public static void getFields() {
         /*String callerClassName = new Exception().getStackTrace()[1].getClassName();
         String calleeClassName = new Exception().getStackTrace()[0].getClassName();
         System.out.println(Thread.currentThread().getStackTrace()[0].getClassName());
         System.out.println(calleeClassName);
         getFields();
-        Class<myEnum> aClass = myEnum.class;
+        Class<MyEnum> aClass = MyEnum.class;
         Class<?> aClass1 = null;
         try {
             aClass1 = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
@@ -52,7 +69,7 @@ public abstract class myEnum implements Comparable {
         System.out.println(aClass);*/
 
         /*Field[] declaredFields = this.getClass().getDeclaredFields();
-        Class<myEnum> aClass = myEnum.class;
+        Class<MyEnum> aClass = MyEnum.class;
 
         if (aClass.isAssignableFrom(declaredFields[this.index].getType())) {
             //System.out.println("true "+declaredField.getType()+" = "+aClass);

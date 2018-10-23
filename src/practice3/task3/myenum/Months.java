@@ -1,24 +1,49 @@
 package practice3.task3.myenum;
 
-public final class Months extends myEnum {
+import java.lang.reflect.Field;
 
-    public static Months s1 = new Months("JANUARY", "description");
-    public static Months s2 = new Months("FEBRUARY", "description");
-    public static Months s3 = new Months("MARCH", "description");
-    public static Months s4 = new Months("APRIL", "description");
-    public static Months s5 = new Months("MAY", "description");
-    public static Months s6 = new Months("JUNE", "description");
-    public static Months s7 = new Months("JULY", "description");
-    public static Months s8 = new Months("AUGUST", "description");
-    public static Months s9 = new Months("SEPTEMBER", "description");
-    public static Months s10 = new Months("OCTOBER", "description");
-    public static Months s11 = new Months("NOVEMBER", "description");
-    public static Months s12 = new Months("DECEMBER", "description");
+public final class Months extends MyEnum {
+
+    public static final Months JANUARY = new Months("JANUARY", "description");
+    public static final Months FEBRUARY = new Months("FEBRUARY", "description");
+    public static final Months MARCH = new Months("MARCH", "description");
+    public static final Months APRIL = new Months("APRIL", "description");
+    public static final Months MAY = new Months("MAY", "description");
+    public static final Months JUNE = new Months("JUNE", "description");
+    public static final Months JULY = new Months("JULY", "description");
+    public static final Months AUGUST = new Months("AUGUST", "description");
+    public static final Months SEPTEMBER = new Months("SEPTEMBER", "description");
+    public static final Months OCTOBER = new Months("OCTOBER", "description");
+    public static final Months NOVEMBER = new Months("NOVEMBER", "description");
+    public static final Months DECEMBER = new Months("DECEMBER", "description");
 
     String description;
 
     public Months(String input, String description) {
         super(input);
         this.description = description;
+        states.put(index, this);
     }
+/*
+    public static void values() {
+        Field[] declaredFields = Months.class.getDeclaredFields();
+
+        Class<MyEnum> aClass = MyEnum.class;
+*//*
+        if (aClass.isAssignableFrom(declaredFields[this.index].getType())) {
+            //System.out.println("true "+declaredField.getType()+" = "+aClass);
+            return declaredFields[this.index].getName();
+
+
+        } *//*
+
+        //
+        Months[] months = new Months[declaredFields.length];
+        int counter =0;
+        for (int i = 0; i < declaredFields.length; i++) {
+            if (aClass.isAssignableFrom(declaredFields[i].getType())){
+            }
+        }
+
+    }*/
 }

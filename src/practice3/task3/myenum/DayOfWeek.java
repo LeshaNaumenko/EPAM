@@ -1,11 +1,11 @@
 package practice3.task3.myenum;
 
-public final class DayOfWeek extends myEnum {
+public  final class DayOfWeek extends MyEnum {
 
 
-    public static myEnum myEum = new DayOfWeek("MONDAY");
-    public static myEnum myEum2 = new DayOfWeek("FRIDAY");
-    public static myEnum myEum3 = new DayOfWeek("SUNDAY");
+    public static final DayOfWeek myEum = new DayOfWeek("MONDAY");
+    public static final DayOfWeek myEum2 = new DayOfWeek("FRIDAY");
+    public static final DayOfWeek myEum3 = new DayOfWeek("SUNDAY");
 
 
     private DayOfWeek(String input) {
