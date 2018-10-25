@@ -1,17 +1,12 @@
 package project1_mobile_service.controller;
 
-import project1_mobile_service.view.InputUtility;
+import project1_mobile_service.view.*;
 import project1_mobile_service.data.DataSource;
 import project1_mobile_service.model.comparator.sortBySubscriptFeeComparator;
-import project1_mobile_service.model.entity.Company;
-import project1_mobile_service.model.entity.Lifecell;
+import project1_mobile_service.model.entity.*;
 import project1_mobile_service.service.Service;
-import project1_mobile_service.view.ConstantsMessage;
-import project1_mobile_service.view.ViewTariff;
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class Controller {
 
@@ -62,35 +57,35 @@ public class Controller {
             switch (inputNumber) {
                 case 1:
                     String line = utility.getLine();
-                    copy = service.findByName(copy, line);
+                    copy = Service.findByName(copy, line);
                     break;
                 case 2:
                     String line1 = utility.getLine();
-                    copy = service.findExcludingName(copy, line1);
+                    copy = Service.findExcludingName(copy, line1);
                     break;
                 case 3:
                     int input = utility.inputNumber("=fee\t");
-                    copy = service.findBySubscriptionFee(copy, input);
+                    copy = Service.findBySubscriptionFee(copy, input);
                     break;
                 case 4:
                     int input1 = utility.inputNumber(">fee\t");
-                    copy = service.moreThanSpecifiedSubscriptionFee(copy, input1);
+                    copy = Service.moreThanSpecifiedSubscriptionFee(copy, input1);
                     break;
                 case 5:
                     int input2 = utility.inputNumber("<fee\t");
-                    copy = service.lessThanSpecifiedSubscriptionFee(copy, input2);
+                    copy = Service.lessThanSpecifiedSubscriptionFee(copy, input2);
                     break;
                 case 6:
-                    copy = service.haveInternet(copy);
+                    copy = Service.haveInternet(copy);
                     break;
                 case 7:
-                    copy = service.haveNoInternet(copy);
+                    copy = Service.haveNoInternet(copy);
                     break;
                 case 8:
-                    copy = service.haveSMS(copy);
+                    copy = Service.haveSMS(copy);
                     break;
                 case 9:
-                    copy = service.haveNoSMS(copy);
+                    copy = Service.haveNoSMS(copy);
                     break;
                 case 0:
                     return;
@@ -112,9 +107,5 @@ public class Controller {
             viewTariff.printListOfTariffs(list);
             return true;
         }
-    }
-
-    public static void main(String[] args) {
-        new Controller(new Lifecell(), new ViewTariff(), new InputUtility()).run();
     }
 }

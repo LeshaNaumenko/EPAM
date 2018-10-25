@@ -26,7 +26,7 @@ public class Service {
 
     //Methods for searching*********************************
 
-    public List<Company.Tariff> findByName(List<Company.Tariff> tempList, String name) {
+    public static List<Company.Tariff> findByName(List<Company.Tariff> tempList, String name) {
         List<Company.Tariff> temp = new ArrayList<>();
 
         for (Company.Tariff tariff : tempList) {
@@ -37,7 +37,7 @@ public class Service {
         return temp;
     }
 
-    public List<Company.Tariff> findExcludingName(List<Company.Tariff> tempList, String name) {
+    public static List<Company.Tariff> findExcludingName(List<Company.Tariff> tempList, String name) {
         Iterator<Company.Tariff> iterator = tempList.iterator();
 
         while (iterator.hasNext()){
@@ -49,7 +49,7 @@ public class Service {
         return tempList;
     }
 
-    public List<Company.Tariff> findBySubscriptionFee(List<Company.Tariff> copy, int input) {
+    public static List<Company.Tariff> findBySubscriptionFee(List<Company.Tariff> copy, int input) {
         List<Company.Tariff> temp = new ArrayList<>();
 
         for (Company.Tariff tariff : copy) {
@@ -60,7 +60,7 @@ public class Service {
         return temp;
     }
 
-    public List<Company.Tariff> moreThanSpecifiedSubscriptionFee(List<Company.Tariff> copy, int input1) {
+    public static List<Company.Tariff> moreThanSpecifiedSubscriptionFee(List<Company.Tariff> copy, int input1) {
         List<Company.Tariff> temp = new ArrayList<>();
 
         for (Company.Tariff tariff : copy) {
@@ -71,7 +71,7 @@ public class Service {
         return temp;
     }
 
-    public List<Company.Tariff> lessThanSpecifiedSubscriptionFee(List<Company.Tariff> copy, int input2) {
+    public static List<Company.Tariff> lessThanSpecifiedSubscriptionFee(List<Company.Tariff> copy, int input2) {
         List<Company.Tariff> temp = new ArrayList<>();
 
         for (Company.Tariff tariff : copy) {
@@ -82,7 +82,7 @@ public class Service {
         return temp;
     }
 
-    public List<Company.Tariff> haveInternet(List<Company.Tariff> copy) {
+    public static List<Company.Tariff> haveInternet(List<Company.Tariff> copy) {
         Iterator<Company.Tariff> iterator = copy.iterator();
 
         while (iterator.hasNext()){
@@ -94,7 +94,7 @@ public class Service {
         return copy;
     }
 
-    public List<Company.Tariff> haveNoInternet(List<Company.Tariff> copy) {
+    public static List<Company.Tariff> haveNoInternet(List<Company.Tariff> copy) {
         Iterator<Company.Tariff> iterator = copy.iterator();
 
         while (iterator.hasNext()){
@@ -106,7 +106,7 @@ public class Service {
         return copy;
     }
 
-    public List<Company.Tariff> haveSMS(List<Company.Tariff> copy) {
+    public static List<Company.Tariff> haveSMS(List<Company.Tariff> copy) {
         Iterator<Company.Tariff> iterator = copy.iterator();
 
         while (iterator.hasNext()){
@@ -118,7 +118,7 @@ public class Service {
         return copy;
     }
 
-    public List<Company.Tariff> haveNoSMS(List<Company.Tariff> copy) {
+    public static List<Company.Tariff> haveNoSMS(List<Company.Tariff> copy) {
         Iterator<Company.Tariff> iterator = copy.iterator();
 
         while (iterator.hasNext()){

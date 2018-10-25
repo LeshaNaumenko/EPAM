@@ -14,7 +14,7 @@ public class InputUtility {
 
     public String getLine(){
         scanner = new Scanner(System.in);
-        viewTariff.printMessageWithoutLn("Enter name of tariff>>");
+        viewTariff.printMessageWithoutLn(ConstantsMessage.ENTER_NAME_OF_TARIFF);
         String s = scanner.nextLine();
         return s;
     }
@@ -22,7 +22,7 @@ public class InputUtility {
         scanner = new Scanner(System.in);
         int input;
         while (true) {
-            viewTariff.printMessageWithoutLn(spaceForFindMenu+"Enter a positive number >>");
+            viewTariff.printMessageWithoutLn(spaceForFindMenu+ConstantsMessage.POSITIVE);
             if (!scanner.hasNextInt()) {
                 viewTariff.printMessage(ConstantsMessage.WRONG_INPUT_INT_DATA);
                 scanner.next();

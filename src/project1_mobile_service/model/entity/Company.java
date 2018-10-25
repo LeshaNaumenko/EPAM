@@ -19,7 +19,7 @@ public abstract class Company {
     /**
      * Total number of tariffs.
      */
-    private     List<Tariff> tariffList = new ArrayList<>();
+    private List<Tariff> tariffList = new ArrayList<>();
 
     /**
      * Initializes a newly created Company object.
@@ -393,7 +393,7 @@ public abstract class Company {
 
         public static class Calls {
             /**
-             * Number of minutes for your mobile service
+             * Number of minutes for your mobile controller.service
              */
             private Minutes own;
             /**
