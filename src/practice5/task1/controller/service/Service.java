@@ -19,9 +19,12 @@ public class Service {
         this.classRegister = classRegister;
     }
 
-    public boolean addAll(String[] checkFullName,int[] calendar, String phone, String[] address ) {
+    public boolean addAll(String[] fullName,int[] calendar, String phone, String[] address ) {
 
-         return classRegister.addRecord(checkFullName[0], checkFullName[1], checkFullName[2], new GregorianCalendar(calendar[0],calendar[1],calendar[2]), phone, new Address(address[0],address[1], address[2]));
+         return classRegister.addRecord(fullName[0], fullName[1], fullName[2],
+                 new GregorianCalendar(calendar[0],calendar[1],calendar[2]),
+                 phone,
+                 new Address(address[0],address[1], address[2]));
     }
 
     public Collection getAllRecords() {

@@ -78,7 +78,9 @@ public class Validator {
     public String checkNumber() {
         view.printMessage(ConstantMessage.ENTER_NUMBER);
         String temp;
-        Pattern compile = Pattern.compile("\\+[1-9](\\d{2})\\([0-9]{2}\\)([0-9]{2}-){2}([0-9]{3})");
+//        Pattern compile = Pattern.compile(  "\\+[1-9](\\d{,2})\\(\\d{2}\\)(\\d{2}-){2}\\d{3}");
+        Pattern compile = Pattern.compile(  "\\+[1-9]\\d{2}\\(\\d{2}\\)(\\d{2}-){2}\\d{3}");
+//        Pattern compile = Pattern.compile("\\+[1-9]  (\\d{2})    \\([0-9]{2}\\)   ([0-9]{2}-){2}([0-9]{3})");
         while (!(temp=scanner.nextLine()).equals("n")){
             if (compile.matcher(temp).find()){
                 break;

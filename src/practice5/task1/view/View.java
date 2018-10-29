@@ -5,8 +5,9 @@ import java.util.Collection;
 public class View {
 
 
-    public void printMessage(String menu) {
-        System.out.println(menu);
+    public void printMessage(String message) {
+        System.out.println(message);
+        System.out.println();
     }
 
     public void printList(Collection allRecords) {

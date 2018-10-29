@@ -58,4 +58,13 @@ public class Address {
         result = 31 * result + (room != null ? room.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "street='" + street + '\'' +
+                ", house='" + house + '\'' +
+                ", room='" + room + '\'' +
+                '}';
+    }
 }

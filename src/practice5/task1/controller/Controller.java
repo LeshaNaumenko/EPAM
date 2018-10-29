@@ -9,6 +9,7 @@ import practice5.task1.view.View;
 import project1_mobile_service.view.ConstantsMessage;
 
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.GregorianCalendar;
 
 
@@ -27,12 +28,11 @@ public class Controller {
 
         while (true){
             view.printMessage(StudentMenu.MENU);
-
             int posNumber = validator.getPosNumber();
 
             switch (posNumber){
                 case 1:
-                    view.printList(service.getAllRecords());
+                    hasListOfRecord(service.getAllRecords());
                     break;
                 case 2:
                     String[] strings = validator.checkFullName();
@@ -53,7 +53,16 @@ public class Controller {
         }
     }
 
+    private void hasListOfRecord(Collection allRecords) {
+        if (!allRecords.isEmpty()){
+            view.printList(allRecords);
+        }else
+            view.printMessage(ConstantsMessage.NO_RECORDS);
+    }
+
     public static void main(String[] args) {
         new Controller().run();
     }
+
+
 }
