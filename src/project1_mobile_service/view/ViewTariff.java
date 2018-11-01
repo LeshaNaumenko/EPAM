@@ -33,6 +33,6 @@ public class ViewTariff {
 
     public void printFindMenu() {
         System.out.println( FindMenu.BY_NAME+FindMenu.DELETE_NAME+FindMenu.FEE+FindMenu.MORE_FEE+FindMenu.LESS_FEE
-                +FindMenu.HAS_INTERNET+FindMenu.HAS_NO_INTERNET+FindMenu.HAS_SMS+FindMenu.HAS_NO_SMS+FindMenu.BACK_TO_MENU);
+                +FindMenu.HAS_INTERNET+FindMenu.HAS_NO_INTERNET+FindMenu.BACK_TO_MENU);
     }
 }

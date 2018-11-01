@@ -5,6 +5,7 @@ import project1_mobile_service.data.DataSource;
 import project1_mobile_service.model.comparator.sortBySubscriptFeeComparator;
 import project1_mobile_service.model.entity.*;
 import project1_mobile_service.service.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class Controller {
                     viewTariff.printListOfTariffs(service.getListOfTariffs());
                     break;
                 case 2:
-                    viewTariff.printResult(ConstantsMessage.NUMBER_OF_CLIENTS,service.getTotalNumberOfClients());
+                    viewTariff.printResult(ConstantsMessage.NUMBER_OF_CLIENTS, service.getTotalNumberOfClients());
                     break;
                 case 3:
                     viewTariff.printListOfTariffs(service.sortTariff(new sortBySubscriptFeeComparator()));
@@ -80,12 +81,6 @@ public class Controller {
                     break;
                 case 7:
                     copy = Service.haveNoInternet(copy);
-                    break;
-                case 8:
-                    copy = Service.haveSMS(copy);
-                    break;
-                case 9:
-                    copy = Service.haveNoSMS(copy);
                     break;
                 case 0:
                     return;

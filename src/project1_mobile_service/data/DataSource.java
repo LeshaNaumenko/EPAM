@@ -13,33 +13,38 @@ public class DataSource {
 
     public static Company getTariff(Company company) {
         company.setTariffList(Arrays.asList(
-                new Company.Tariff(
+                new Company.TariffWithoutInternet(
                         "Льготный",
                         25,
+                        SMS.MB_100,
                         new Company.Tariff.Calls(Minutes.M_500, Minutes.M_100)),
-                new Company.Tariff(
+                new Company.TariffInternet(
                         "VIP 3G",
                         250,
                         SMS.MB_100,
                         new Company.Tariff.Calls(Minutes.UNLIMITED, Minutes.M_100),
                         new Company.Tariff.Internet(GenerationMobile.GENERATION_3G, Megabytes.MB_1000)),
-                new Company.Tariff(
+                new Company.TariffInternet(
                         "Бомба",
-                        150, SMS.MB_100,
+                        150,
+                        SMS.MB_100,
                         new Company.Tariff.Calls(Minutes.UNLIMITED, Minutes.M_100),
                         new Company.Tariff.Internet(GenerationMobile.GENERATION_4G, Megabytes.MB_2000)),
-                new Company.Tariff(
+                new Company.TariffWithoutInternet(
                         "Дети",
-                        100, SMS.UNLIMITED,
+                        100,
+                        SMS.UNLIMITED,
                         new Company.Tariff.Calls(Minutes.UNLIMITED, Minutes.M_500)),
-                new Company.Tariff(
+                new Company.TariffInternet(
                         "Звонки всем",
-                        50, SMS.MB_500,
+                        50,
+                        SMS.MB_500,
                         new Company.Tariff.Calls(Minutes.UNLIMITED, Minutes.M_100),
                         new Company.Tariff.Internet(GenerationMobile.GENERATION_3G, Megabytes.MB_100)),
-                new Company.Tariff(
+                new Company.TariffInternet(
                         "VIP 6G",
-                        300, SMS.UNLIMITED,
+                        300,
+                        SMS.UNLIMITED,
                         new Company.Tariff.Calls(Minutes.UNLIMITED, Minutes.UNLIMITED),
                         new Company.Tariff.Internet(GenerationMobile.GENERATION_6G, Megabytes.UNLIMITED))
 

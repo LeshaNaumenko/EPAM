@@ -37,7 +37,7 @@ public abstract class Company {
 
     /**
      * Returns the number of total clients.
-     * @return
+     * @return sum
      */
     public int getTotalNumberOfClients() {
         int sum = 0;
@@ -50,7 +50,7 @@ public abstract class Company {
     /**
      * Sorts this list according to the order induced by the specified Comparator.
      * @param comparator
-     * @return
+     * @return sorted list of the tariffs
      */
 
     public List<Company.Tariff> sort(Comparator<Company.Tariff> comparator) {
@@ -61,7 +61,7 @@ public abstract class Company {
 
     /**
      * Returns the parent company.
-     * @return
+     * @return parentCompany
      */
     public String getParentCompany() {
         return parentCompany;
@@ -76,7 +76,7 @@ public abstract class Company {
     }
     /**
      * Returns the location.
-     * @return
+     * @return location
      */
     public String getLocation() {
         return location;
@@ -91,7 +91,7 @@ public abstract class Company {
     }
     /**
      * Returns list of tariffs.
-     * @return
+     * @return tariffList
      */
     public List<Tariff> getTariffList() {
         return tariffList;
@@ -110,7 +110,7 @@ public abstract class Company {
      * Parameter tariff to add to tariff list of the company.
      * If such a tariff already exists in the company, then it is not added.
      * @param tariff
-     * @return
+     * @return true (if the tariff was added successfully) or false (if adding tariff failed)
      */
 
     public boolean addTariff(Tariff tariff) {
@@ -121,7 +121,7 @@ public abstract class Company {
         return false;
     }
 
-    public static class Tariff {
+    public abstract static class Tariff {
 
         /**
          * Tariff id.
@@ -142,15 +142,14 @@ public abstract class Company {
         /**
          * SMS object of the tariff plan.
          */
-        private SMS sms = null;
+        private SMS sms;
         /**
          * Calls object of the tariff plan.
          */
-        private Calls calls = null;
+        private Calls calls;
         /**
          * Internet object of the tariff plan.
          */
-        private Internet internet = null;
 
         /**
          * Initializes a newly created Tariff object.
@@ -159,15 +158,7 @@ public abstract class Company {
         }
 
         /**
-         * Constructs a new Company object with name, subscription fee and calls.
-         */
-        public Tariff(String name, double subscriptionFee,  Calls calls) {
-            this.name = name;
-            this.subscriptionFee = subscriptionFee;
-            this.calls = calls;
-        }
-        /**
-         * Constructs a new Company object with name, subscription fee, sms and calls.
+         * Constructs a new Tariff object with name, subscription fee, sms and calls.
          */
         public Tariff(String name, double subscriptionFee, SMS sms,  Calls calls) {
             this.name = name;
@@ -177,31 +168,9 @@ public abstract class Company {
         }
 
         /**
-         * Constructs a new Company object with name, subscription fee, calls and internet.
-         */
-        public Tariff(String name, double subscriptionFee, Calls calls, Internet internet) {
-            this.name = name;
-            this.subscriptionFee = subscriptionFee;
-            this.calls = calls;
-            this.internet = internet;
-        }
-
-        /**
-         * Constructs a new Company object with name, subscription fee, sms, calls and internet.
-         */
-        public Tariff(String name, double subscriptionFee, SMS sms, Calls calls, Internet internet) {
-            this.name = name;
-            this.subscriptionFee = subscriptionFee;
-            this.sms = sms;
-            this.calls = calls;
-            this.internet = internet;
-        }
-
-
-        /**
          * Parameter client to add one client to clients list of the tariff.
          * @param client
-         * @return
+         * @return true (if client was added successfully) or false (if adding client failed)
          */
         public boolean addClient(Client client) {
             if (clientsList.containsKey(client.getId())) {
@@ -213,30 +182,15 @@ public abstract class Company {
 
         /**
          * Returns tariff id.
-         * @return
+         * @return id
          */
         public int getId() {
             return id;
         }
 
         /**
-         * Returns the Internet object.
-         * @return
-         */
-        public Internet getInternet() {
-            return internet;
-        }
-        /**
-         * Parameter internet to set.
-         * @param internet
-         */
-        public void setInternet(Internet internet) {
-            this.internet = internet;
-        }
-
-        /**
          * Returns the name of the tariff.
-         * @return
+         * @return name
          */
 
         public String getName() {
@@ -253,7 +207,7 @@ public abstract class Company {
 
         /**
          * Returns the Subscription Fee of the tariff.
-         * @return
+         * @return subscriptionFee
          */
         public double getSubscriptionFee() {
             return subscriptionFee;
@@ -261,7 +215,7 @@ public abstract class Company {
 
         /**
          * Returns list of clients.
-         * @return
+         * @return list of clients
          */
         public Collection<Client> getClientsList() {
             return clientsList.values();
@@ -269,7 +223,7 @@ public abstract class Company {
 
         /**
          * Returns the SMS object of the tariff.
-         * @return
+         * @return sms
          */
         public SMS getSms() {
             return sms;
@@ -277,7 +231,7 @@ public abstract class Company {
 
         /**
          * Returns the Сalls object of the tariff.
-         * @return
+         * @return calls
          */
         public Calls getCalls() {
             return calls;
@@ -330,27 +284,25 @@ public abstract class Company {
 
         /**
          * Returns a string representation of the Tariff object
-         * @return
+         * @return a string representation of the object
          */
         @Override
         public String toString() {
             return String.format(
-                    "%-8s {" +
+                    "%-22s {" +
                     "id = %-3d" +
                     "name = %-13s" +
                     "Subscription Fee = %-7s" +
                     "sms = %-12s" +
                     "calls = %-40s" +
-                    "number of clients=%-5s"+
-                    "internet = %-30s"
+                    "number of clients=%-5s"
                     , this.getClass().getSimpleName(),
                     id,
                     name,
                     subscriptionFee,
                     sms,
                     calls,
-                    clientsList.values().size(),
-                    internet
+                    clientsList.values().size()
             );
         }
 
@@ -443,7 +395,7 @@ public abstract class Company {
 
             /**
              * Returns the generation .
-             * @return
+             * @return generation
              */
             public GenerationMobile getGeneration() {
                 return generation;
@@ -458,7 +410,7 @@ public abstract class Company {
             }
             /**
              * Returns number of megabytes .
-             * @return
+             * @return megabytes
              */
             public Megabytes getMegabytes() {
                 return megabytes;
@@ -474,7 +426,7 @@ public abstract class Company {
 
             /**
              * Returns a string representation of the Internet object
-             * @return
+             * @return a string representation of the Internet
              */
             @Override
             public String toString() {
@@ -483,6 +435,70 @@ public abstract class Company {
                         ", megabytes=" + megabytes +
                         '}';
             }
+        }
+    }
+    public static class TariffInternet extends Tariff{
+
+        /**
+         * Internet tariff
+         */
+        private Internet internet;
+
+        /**
+         * Constructs a new TariffInternet object with name, subscription fee, sms, calls and internet.
+         */
+
+        public TariffInternet(String name, double subscriptionFee, SMS sms, Calls calls, Internet internet) {
+            super(name, subscriptionFee,sms, calls);
+            this.internet = internet;
+        }
+
+        /**
+         * Returns the Internet object.
+         * @return internet
+         */
+        public Internet getInternet() {
+            return internet;
+        }
+        /**
+         * Parameter internet to set.
+         * @param internet
+         */
+        public void setInternet(Internet internet) {
+            this.internet = internet;
+        }
+
+        /**
+         * Returns a string representation of the TariffInternet object
+         * @return a string representation of the TariffInternet
+         */
+
+        @Override
+        public String toString() {
+            return super.toString() +String.format("internet = %-30s", internet);
+        }
+    }
+    public static class TariffWithoutInternet extends Tariff{
+        /**
+         * Initializes a newly created TariffWithoutInternet object.
+         */
+        public TariffWithoutInternet() {
+        }
+
+        /**
+         * Constructs a new TariffWithoutInternet object with name, subscription fee, sms and calls.
+         */
+        public TariffWithoutInternet(String name, double subscriptionFee, SMS sms, Calls calls) {
+            super(name, subscriptionFee, sms, calls);
+        }
+
+        /**
+         * Returns a string representation of the TariffWithoutInternet object
+         * @return a string representation of the TariffWithoutInternet
+         */
+        @Override
+        public String toString() {
+            return super.toString()+'}';
         }
     }
 

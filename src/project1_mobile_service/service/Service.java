@@ -40,7 +40,7 @@ public class Service {
     public static List<Company.Tariff> findExcludingName(List<Company.Tariff> tempList, String name) {
         Iterator<Company.Tariff> iterator = tempList.iterator();
 
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             Company.Tariff next = iterator.next();
             if (name.equals(next.getName())) {
                 iterator.remove();
@@ -85,9 +85,9 @@ public class Service {
     public static List<Company.Tariff> haveInternet(List<Company.Tariff> copy) {
         Iterator<Company.Tariff> iterator = copy.iterator();
 
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             Company.Tariff next = iterator.next();
-            if (next.getInternet() == null) {
+            if (next instanceof Company.TariffWithoutInternet) {
                 iterator.remove();
             }
         }
@@ -97,16 +97,16 @@ public class Service {
     public static List<Company.Tariff> haveNoInternet(List<Company.Tariff> copy) {
         Iterator<Company.Tariff> iterator = copy.iterator();
 
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             Company.Tariff next = iterator.next();
-            if (next.getInternet()!= null) {
+            if (next instanceof Company.TariffInternet) {
                 iterator.remove();
             }
         }
         return copy;
     }
 
-    public static List<Company.Tariff> haveSMS(List<Company.Tariff> copy) {
+   /* public static List<Company.Tariff> haveSMS(List<Company.Tariff> copy) {
         Iterator<Company.Tariff> iterator = copy.iterator();
 
         while (iterator.hasNext()){
@@ -128,6 +128,6 @@ public class Service {
             }
         }
         return copy;
-    }
+    }*/
     //End of methods for searching**************************
 }
