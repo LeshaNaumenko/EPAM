@@ -5,12 +5,32 @@ import project1_mobile_service.model.entity.*;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * The {@code DataSource} class provides two methods for obtaining
+ * tariffs for company and random clients for these tariffs.
+ *
+ * @author Alex Naumenko
+ * @see Company
+ * @see Random
+ * @version 1.0
+ */
+
 public class DataSource {
 
+    /**
+     * Returns new client.
+     *
+     * @return instance of client
+     */
     public static Client getNewClient() {
         return new Client();
     }
 
+    /**
+     * Returns this company with list of tariffs.
+     * @param company
+     * @return company
+     */
     public static Company getTariff(Company company) {
         company.setTariffList(Arrays.asList(
                 new Company.TariffWithoutInternet(
@@ -51,6 +71,11 @@ public class DataSource {
         ));
         return company;
     }
+
+    /**
+     * Sets a random number of clients for a specific tariff of the company.
+     * @param company
+     */
 
     public static void getRandomClients(Company company) {
         Random random = new Random();

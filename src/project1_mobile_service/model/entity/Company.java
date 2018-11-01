@@ -2,7 +2,7 @@ package project1_mobile_service.model.entity;
 
 import java.util.*;
 
-public abstract class Company {
+public class Company {
     /**
      * Counter for personal tariff id.
      * */
@@ -121,6 +121,9 @@ public abstract class Company {
         return false;
     }
 
+    /**
+     *  Abstract static nested class {@code Toy} is super class of tariff's entity.
+     */
     public abstract static class Tariff {
 
         /**
@@ -176,6 +179,7 @@ public abstract class Company {
             if (clientsList.containsKey(client.getId())) {
                 return false;
             }
+            client.setTariff(this);
             clientsList.put(client.getId(), client);
             return true;
         }
@@ -309,7 +313,7 @@ public abstract class Company {
         /**
          * Indicates whether some other Tariff is "equal to" this one.
          * @param o
-         * @return
+         * @return true or false
          */
 
         @Override
@@ -328,7 +332,7 @@ public abstract class Company {
 
         /**
          * Returns a hash code value for the Tariff object
-         * @return
+         * @return result
          */
         @Override
         public int hashCode() {
@@ -342,6 +346,11 @@ public abstract class Company {
             result = 31 * result + (calls != null ? calls.hashCode() : 0);
             return result;
         }
+
+        /**
+         * Static nested class {@code Calls} is used by tariff class
+         * for representing {@code Calls} entity.
+         */
 
         public static class Calls {
             /**
@@ -375,6 +384,10 @@ public abstract class Company {
             }
         }
 
+        /**
+         * Static nested class {@code Internet} is used by tariff class
+         * for representing {@code Internet} entity.
+         */
         public static class Internet {
             /**
              * Generation of the internet
@@ -437,6 +450,11 @@ public abstract class Company {
             }
         }
     }
+
+    /**
+     * Static nested class {@code TariffInternet} extends
+     * abstract static nested class {@code Tariff}.
+     */
     public static class TariffInternet extends Tariff{
 
         /**
@@ -478,6 +496,11 @@ public abstract class Company {
             return super.toString() +String.format("internet = %-30s", internet);
         }
     }
+
+    /**
+     * Static nested class {@code TariffWithoutInternet} extends
+     * abstract static nested class {@code Tariff}.
+     */
     public static class TariffWithoutInternet extends Tariff{
         /**
          * Initializes a newly created TariffWithoutInternet object.
