@@ -1,8 +1,7 @@
-package practice5.task3;
+package practice5.task3.model;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public class Translator {
 
@@ -16,13 +15,15 @@ public class Translator {
         dictionary.put("Java", "Java");
     }
 
-    public void addWord(String eng, String rus ){
+    public boolean addWord(String eng, String rus ){
+        if (dictionary.containsKey(eng)) return false;
         dictionary.put(eng, rus);
+        return true;
     }
 
     public String translate(String sentence){
         StringBuilder stringBuilder = new StringBuilder();
-        String[] split = sentence.toLowerCase().split("[ _,.]");
+        String[] split = sentence.toLowerCase().split(" ");
         for (String s : split) {
             if (dictionary.containsKey(s)){
                 stringBuilder.append(dictionary.get(s)+" ");
