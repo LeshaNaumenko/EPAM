@@ -5,15 +5,15 @@ import project1_mobile_service.model.entity.Company;
 import java.util.List;
 
 /**
- * The ViewTariff is part of the MVC pattern. The view means presentation of the model in a particular format.
- * Implements {@code Informable} interface.
+ * The ViewTariff is part of the MVC pattern.
+ * The view means presentation of the model in a particular format
  *
- * @author Slava Poliakov
+ * @author Alex Naumenko
  * @version 1.0
  */
 
-public class ViewTariff {
 
+public class ViewTariff {
 
     /**
      * Outputs list of tariffs.
@@ -42,7 +42,6 @@ public class ViewTariff {
 
     public void printMessageWithoutLn(String message) {
         System.out.print(message);
-
     }
 
     /**
