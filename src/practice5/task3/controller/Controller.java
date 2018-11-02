@@ -40,11 +40,5 @@ public class Controller {
                     view.printMessage(ConstantsMessageTranslator.WRONG_INPUT_INT_DATA);
             }
         }
-
     }
-
-    public static void main(String[] args) {
-        new Controller().run();
-    }
-
 }
