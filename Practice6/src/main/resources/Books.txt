@@ -1,0 +1,10 @@
+Title1, Karpenko, BXV, 2010, 320, 450.0
+Title3", Sokolov, BXV, 1999, 820, 1050.0
+Title4, Maslov, Piter, 2016, 555, 620.5
+Title6, Karpenko, BXV, 2001, 400, 300.0
+Title9, King, Piter, 2013, 456, 100.0
+Title5, Orwell, Piter, 2011, 876, 555.5
+Title2, Karpenko, Word, 2000, 120, 250.0
+Title7, Orwell, Zord, 2018, 276, 155.5
+Title8, Franko, Piter, 2013, 456, 100.0
+Title10, King, Piter, 2013, 456, 100.0
