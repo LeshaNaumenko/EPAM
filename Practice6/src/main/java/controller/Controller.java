@@ -59,22 +59,32 @@ public class Controller {
                 case 6:
                     while (true) {
                         try {
-                            bookService.setBooks(Service.createBooks(IObookService.readFromFile(utility.getPath())));
+                            bookService.setBooks(Service.createBooks(IObookService.readFromTXT(utility.getPath())));
                             break;
                         } catch (IOException e) {
-                            bookView.printMessage(ConstantMessage.WRONG_PATH);
+                            System.err.println(e);
+//                            e.printStackTrace();
                         } catch (Exception e) {
-                            bookView.printMessage(ConstantMessage.WRONG_PATH);
+                            bookView.printMessage("You have some problems.");
+                            System.err.println(e);
+//                            e.printStackTrace();
                         }
                     }
                     continue;
                 case 7:
+                    bookService.setBooks(IObookService.readFromJSON(utility.getPath()));
+                    break;
+                case 8:
                     try {
                         IObookService.writeToFileSer(bookService.getModel(), utility.getPath());
                     } catch (IOException e) {
+                        e.printStackTrace();
                         bookView.printMessage(ConstantMessage.WRONG_PATH);
                     }
                     continue;
+                case 9:
+
+                    break;
                 case 0:
                     System.exit(0);
                 default:
