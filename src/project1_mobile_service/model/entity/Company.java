@@ -27,8 +27,11 @@ public class Company {
     public Company() {
     }
 
+
     /**
      * Constructs a new Company object with location and name of parent company.
+     * @param parentCompany
+     * @param location
      */
     public Company(String parentCompany, String location) {
         this.parentCompany = parentCompany;
