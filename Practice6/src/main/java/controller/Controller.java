@@ -3,14 +3,13 @@ package controller;
 import controller.service.IOService;
 import controller.service.Service;
 import data.DataSource;
+import location.ResourceManager;
 import model.Books;
 import model.entity.Book;
-import view.BooksView;
-import view.ConstantMessage;
-import view.InputUtility;
-import view.Menu;
+import view.*;
 
 import java.io.IOException;
+import java.util.Locale;
 
 
 public class Controller {
@@ -18,43 +17,48 @@ public class Controller {
     private Service bookService;
     private IOService IObookService;
     private InputUtility utility;
+    private ResourceManager resourceManager;
 
 
-    public Controller(Books model, BooksView bookView, Service bookService, IOService IObookService, InputUtility utility) {
+
+    public Controller(Books model, BooksView bookView, Service bookService, IOService IObookService, InputUtility utility,ResourceManager resourceManager) {
         this.utility = utility;
         this.bookView = bookView;
         this.bookService = bookService;
         this.IObookService = IObookService;
         this.bookService.setModel(model);
-        this.utility.setView(bookView);
+        this.resourceManager = resourceManager;
+        this.utility.setView(bookView,resourceManager);
     }
 
     public void run() {
+        bookView.printMessage(ManuLanguage.MENU_INTERNATIONALIZATION);
+        resourceManager.changeResource(getLocal());
         bookService.setBooks(DataSource.getBooks());
         while (true) {
-            bookView.printMessage(Menu.MENU);
+            bookView.printMessage(resourceManager.getString("MENU"));
             int input = utility.getPosNumber();
             switch (input) {
                 case 1:
-                    bookView.printBooks(ConstantMessage.ALL, bookService.getBooks());
+                    bookView.printBooks(resourceManager.getString("ALL"), bookService.getBooks());
                     continue;
                 case 2:
-                    bookView.printMessage(ConstantMessage.ENTER_NAME_OF_AUTHOR);
+                    bookView.printMessage(resourceManager.getString("ENTER_NAME_OF_AUTHOR"));
                     String author = utility.getLine();
-                    searchBooksBy(bookService.getByAuthor(author), ConstantMessage.BY_AUTHOR, author);
+                    searchBooksBy(bookService.getByAuthor(author), resourceManager.getString("BY_AUTHOR"), author);
                     continue;
                 case 3:
-                    bookView.printMessage(ConstantMessage.ENTER_NAME_OF_PUBLISHER);
+                    bookView.printMessage(resourceManager.getString("ENTER_NAME_OF_PUBLISHER"));
                     String publisher = utility.getLine();
-                    searchBooksBy(bookService.getByPublisher(publisher), ConstantMessage.BY_PUBLISHER, publisher);
+                    searchBooksBy(bookService.getByPublisher(publisher), resourceManager.getString("BY_PUBLISHER"), publisher);
                     continue;
                 case 4:
-                    bookView.printMessage(ConstantMessage.ENTER_A_YEAR);
+                    bookView.printMessage(resourceManager.getString("ENTER_A_YEAR"));
                     int tempValue = utility.getPosNumber();
-                    searchBooksBy(bookService.getBooksLater(tempValue), ConstantMessage.ALL_BOOKS_LATER, Integer.toString(tempValue));
+                    searchBooksBy(bookService.getBooksLater(tempValue), resourceManager.getString("ALL_BOOKS_LATER"), Integer.toString(tempValue));
                     continue;
                 case 5:
-                    bookView.printBooks(ConstantMessage.SORT, bookService.getOrderedBooksByPublisher());
+                    bookView.printBooks(resourceManager.getString("SORT"), bookService.getOrderedBooksByPublisher());
                     continue;
                 case 6:
                     while (true) {
@@ -79,7 +83,7 @@ public class Controller {
                         IObookService.writeToFileSer(bookService.getModel(), utility.getPath());
                     } catch (IOException e) {
                         e.printStackTrace();
-                        bookView.printMessage(ConstantMessage.WRONG_PATH);
+                        bookView.printMessage(resourceManager.getString("WRONG_PATH"));
                     }
                     continue;
                 case 9:
@@ -88,15 +92,35 @@ public class Controller {
                 case 0:
                     System.exit(0);
                 default:
-                    bookView.printMessage(ConstantMessage.WRONG_INPUT_INT_DATA + "\n");
+                    bookView.printMessage(resourceManager.getString("WRONG_INPUT_INT_DATA") + "\n");
                     break;
+            }
+        }
+    }
+
+    private Locale getLocal() {
+        while (true) {
+            int language = utility.getPosNumber();
+            switch (language) {
+                case 1:
+                    return new Locale("en", "US");
+                case 2:
+                    return new Locale("uk", "UK");
+                case 3:
+                    return new Locale("ru", "RU");
+                case 0:
+                    System.exit(0);
+                default:
+                    bookView.printMessage(resourceManager.getString("WRONG_INPUT_INT_DATA") + "\n");
+                    break;
+
             }
         }
     }
 
     private void searchBooksBy(Book[] result, String message, String input) {
         if (result.length == 0) {
-            bookView.printMessage(ConstantMessage.NO_BOOKS + input);
+            bookView.printMessage(resourceManager.getString("NO_BOOKS") + input);
         } else {
             bookView.printBooks(message + "\"" + input + "\":", result);
         }
