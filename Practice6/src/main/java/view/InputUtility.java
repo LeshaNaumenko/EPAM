@@ -35,7 +35,6 @@ public class InputUtility {
     }
 
     public String getPath() {
-
         scanner = new Scanner(System.in);
         booksView.printMessage(resourceManager.getString("ENTER_A_PATH"));
         Pattern compile = Pattern.compile("((\\w{1}:\\\\(([A-z]|[0-9]|\\s)+)\\\\\\w+\\.\\w+))|(\\w{1}:\\\\(\\w+\\.\\w+))");
@@ -45,16 +44,17 @@ public class InputUtility {
             if (m.find()) {
                 break;
             }
+            logger.warn(resourceManager.getString("WRONG_INPUT_INT_DATA"));
             booksView.printMessage(resourceManager.getString("WRONG_INPUT_INT_DATA"));
         }
-        logger.info("[m:getPath] Result is " + temp);
+        logger.info("Result is " + temp);
         return temp;
     }
 
     public String getLine() {
         scanner = new Scanner(System.in);
         String s = scanner.nextLine();
-        logger.info("[m:getLine] Result is " + s);
+        logger.info("Result is " + s);
         return s;
     }
 
@@ -64,16 +64,18 @@ public class InputUtility {
         while (true) {
             booksView.printMessage(resourceManager.getString("POSITIVE"));
             if (!scanner.hasNextInt()) {
+                logger.warn(resourceManager.getString("WRONG_INPUT_INT_DATA"));
                 booksView.printMessage(resourceManager.getString("WRONG_INPUT_INT_DATA"));
                 scanner.next();
                 continue;
             }
             input = scanner.nextInt();
             if (input < 0) {
+                logger.warn(resourceManager.getString("WRONG_INPUT_INT_DATA"));
                 booksView.printMessage(resourceManager.getString("WRONG_INPUT_INT_DATA"));
                 continue;
             }
-            logger.debug("[m:getPosNumber] Result is " + input);
+            logger.debug("Result is " + input);
             return input;
         }
     }
