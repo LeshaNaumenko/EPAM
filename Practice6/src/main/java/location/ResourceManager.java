@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 public enum ResourceManager {
     INSTANCE;
-
     private ResourceBundle rb;
     private final String RESOURCE_NAME = "location.data";
 

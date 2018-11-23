@@ -11,6 +11,8 @@ import java.util.regex.Pattern;
 
 public class ServiceWordProcessing {
 
+    //согласные буквы
+    public static final String CONSONANT= "b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z|B|C|D|F|G|H|J|K|L|M|N|P|Q|R|S|T|V|W|X|Y|Z";
     private Book model;
 
     public Book getModel() {
@@ -34,8 +36,7 @@ public class ServiceWordProcessing {
     }
 
     public String textHandling(String text, int length) {
-
-        Pattern compile = Pattern.compile("\\b(b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z|B|C|D|F|G|H|J|K|L|M|N|P|Q|R|S|T|V|W|X|Y|Z)\\w{" + (length - 1) + "}\\b");
+        Pattern compile = Pattern.compile("\\b("+ServiceWordProcessing.CONSONANT+")\\w{" + (length - 1) + "}\\b");
         Matcher ff = compile.matcher(text);
         StringBuilder stringBuilder = new StringBuilder(text);
         int temp = 0;

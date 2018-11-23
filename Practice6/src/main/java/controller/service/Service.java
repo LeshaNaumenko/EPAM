@@ -2,36 +2,49 @@ package controller.service;
 
 import model.PublisherComparator;
 import model.entity.Book;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Service extends AbsService {
 
+    public static final Logger logger = Logger.getLogger(Service.class);
 
     public Book[] getBooks() {
-        return model.getBooks();
+        Book[] books = model.getBooks();
+        logger.trace("Return books: "+ Arrays.toString(books) );
+        return books;
     }
 
     public void setBooks(Book[] books) {
+        logger.trace("Initialize the model list of books: "+Arrays.toString(books) );
         model.setBooks(books);
     }
 
     public Book[] getByAuthor(String author) {
-        return model.getByAuthor(author);
+        Book[] byAuthor = model.getByAuthor(author);
+        logger.trace("Return books by author \""+author+"\" : "+ Arrays.toString(byAuthor) );
+        return byAuthor;
     }
 
     public Book[] getByPublisher(String publisher) {
-        return model.getByPublisher(publisher);
+        Book[] byPublisher = model.getByPublisher(publisher);
+        logger.trace("Return books by publisher \""+publisher+"\" : "+ Arrays.toString(byPublisher) );
+        return byPublisher;
     }
 
     public Book[] getBooksLater(int year) {
-        return model.getBooksLater(year);
+        Book[] booksLater = model.getBooksLater(year);
+        logger.trace("Return books later \""+year+"\" : "+ Arrays.toString(booksLater) );
+        return booksLater;
     }
 
     public Book[] getOrderedBooksByPublisher() {
-
-        return model.sort(new PublisherComparator());
+        Book[] sort = model.sort(new PublisherComparator());
+        logger.trace("Return Ordered Books By Publisher: "+ Arrays.toString(sort));
+        return sort;
     }
 
     public static Book[] createBooks(String books) {
@@ -49,6 +62,7 @@ public class Service extends AbsService {
                         .build());
             }
         }
+        logger.trace("Create array of books using the builder pattern");
         return books1.toArray(new Book[books1.size()]);
     }
 }

@@ -3,8 +3,11 @@ package data;
 
 import controller.service.Service;
 import model.entity.Book;
+import org.apache.log4j.Logger;
 
 public class DataSource {
+        static Logger logger = Logger.getLogger(DataSource.class);
+
     public static Book[] getBooks() {
         String books = "Title1, Shevchenko, BXV, 2010, 320, 450.0\n"+
                           "Title2, Shevchenko, Word, 2000, 120, 250.0\n"+
@@ -14,6 +17,7 @@ public class DataSource {
                           "Title6, Sokolov, BXV, 2001, 400, 300.0\n"+
                           "Title7, Petrov, Zord, 2018, 276, 155.5\n"+
                           "Title8, Shevchenko, Piter, 2013, 456, 100.0";
+        logger.trace("Return default array of books");
         return Service.createBooks(books);
     }
 }
