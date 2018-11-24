@@ -1,9 +1,0 @@
-2018-11-22 20:52:46 DEBUG InputUtility:78 - Result is 1
-2018-11-22 20:52:46 INFO  Controller:122 -  Language selected: English
-2018-11-22 20:52:46 WARN  Controller:40 -  Books are set by default.
-2018-11-22 20:52:50 DEBUG InputUtility:78 - Result is 4
-2018-11-22 20:52:50 INFO  Controller:62 -  Menu selected: 4. Description: Books published after a certain year
-2018-11-22 20:52:53 DEBUG InputUtility:78 - Result is 2000
-2018-11-22 20:52:53 INFO  BooksView:18 - print books: [Book{name=Title1, author=Shevchenko, publisher=BXV  , year=2010, pages=320, price=450.0  }, Book{name=Title4, author=Maslov    , publisher=Piter, year=2016, pages=555, price=620.5  }, Book{name=Title5, author=Sokolov   , publisher=Piter, year=2011, pages=876, price=555.5  }, Book{name=Title6, author=Sokolov   , publisher=BXV  , year=2001, pages=400, price=300.0  }, Book{name=Title7, author=Petrov    , publisher=Zord , year=2018, pages=276, price=155.5  }, Book{name=Title8, author=Shevchenko, publisher=Piter, year=2013, pages=456, price=100.0  }]
-2018-11-22 20:52:56 DEBUG InputUtility:78 - Result is 0
-2018-11-22 20:52:56 INFO  Controller:107 -  User completed

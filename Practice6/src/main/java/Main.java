@@ -1,5 +1,4 @@
 import controller.Controller;
-import controller.service.IOService;
 import controller.service.Service;
 import location.ResourceManager;
 import model.Books;
@@ -14,7 +13,6 @@ public class Main {
         new Controller(new Books(),
                 new BooksView(),
                 new Service(),
-                new IOService(),
                 new InputUtility(),
                 ResourceManager.INSTANCE)
                 .run();

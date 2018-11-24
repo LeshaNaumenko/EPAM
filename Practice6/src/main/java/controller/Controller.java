@@ -1,34 +1,31 @@
 package controller;
 
-import controller.service.IOService;
 import controller.service.Service;
 import data.DataSource;
 import location.ResourceManager;
 import model.Books;
 import model.entity.Book;
 import org.apache.log4j.Logger;
-import utility.InputOutputFile;
 import view.*;
 
-import java.io.IOException;
 import java.util.Locale;
 
 
 public class Controller {
     static Logger logger = Logger.getLogger(Controller.class);
 
+
+
     private BooksView bookView;
     private Service bookService;
-    private IOService IObookService;
     private InputUtility utility;
     private ResourceManager resourceManager;
 
 
-    public Controller(Books model, BooksView bookView, Service bookService, IOService IObookService, InputUtility utility, ResourceManager resourceManager) {
+    public Controller(Books model, BooksView bookView, Service bookService, InputUtility utility, ResourceManager resourceManager) {
         this.utility = utility;
         this.bookView = bookView;
         this.bookService = bookService;
-        this.IObookService = IObookService;
         this.bookService.setModel(model);
         this.resourceManager = resourceManager;
         this.utility.setView(bookView, resourceManager);
@@ -42,62 +39,8 @@ public class Controller {
         while (true) {
             bookView.printMessage(resourceManager.getString("MENU"));
             MainMenuItem mainMenuItem = getMainMenuItem();
-            switch (mainMenuItem) {
-                case SHOW_BOOKS:
-                    logger.info(" Menu selected: " + 1 + ". Description: Origin book array");
-                    bookView.printBooks(resourceManager.getString("ALL"), bookService.getBooks());
-                    continue;
-                case FIND_AUTHOR:
-                    logger.info(" Menu selected: " + 2 + ". Description: All the books of a certain author");
-                    bookView.printMessage(resourceManager.getString("ENTER_NAME_OF_AUTHOR"));
-                    String author = utility.getLine();
-                    searchBooksBy(bookService.getByAuthor(author), resourceManager.getString("BY_AUTHOR"), author);
-                    continue;
-                case FIND_PUBLISHER:
-                    logger.info(" Menu selected: " + 3 + ". Description: All the books of a certain publisher ");
-                    bookView.printMessage(resourceManager.getString("ENTER_NAME_OF_PUBLISHER"));
-                    String publisher = utility.getLine();
-                    searchBooksBy(bookService.getByPublisher(publisher), resourceManager.getString("BY_PUBLISHER"), publisher);
-                    continue;
-                case FIND_YEAR:
-                    logger.info(" Menu selected: " + 4 + ". Description: Books published after a certain year");
-                    bookView.printMessage(resourceManager.getString("ENTER_A_YEAR"));
-                    int tempValue = utility.getPosNumber();
-                    searchBooksBy(bookService.getBooksLater(tempValue), resourceManager.getString("ALL_BOOKS_LATER"), Integer.toString(tempValue));
-                    continue;
-                case SORT_PUBLISH:
-                    logger.info(" Menu selected: " + 5 + ". Description: Sort books by publisher");
-                    bookView.printBooks(resourceManager.getString("SORT"), bookService.getOrderedBooksByPublisher());
-                    continue;
-                case READ_FROM_TXT:
-                    logger.info(" Menu selected: " + 6 + ". Description: Read from file(.txt) and set to model");
-                    bookService.setBooks(Service.createBooks(InputOutputFile.readFromTXT(utility.getPath())));
-                    break;
-                case READ_FROM_JSON:
-                    logger.info(" Menu selected: " + 7 + ". Description: Read from file(.json) and set to model");
-                    bookService.setBooks(InputOutputFile.readFromJSON(utility.getPath()));
-                    break;
-                case WRITE_TO_SER:
-                    logger.info(" Menu selected: " + 8 + ". Description: Write to file (.ser)");
-
-                    InputOutputFile.writeToFileSer(bookService.getModel(), utility.getPath());
-//                        logger.error(e);
-//                        e.printStackTrace();
-//                        bookView.printMessage(resourceManager.getString("WRONG_PATH"));
-                    continue;
-                case WRITE_TO_TXT:
-                    //don't forget to do
-                    InputOutputFile.writeToTXT(bookService.getModel(), utility.getPath());
-                    logger.info(" Menu selected: " + 9 + ". Description: Write to file (.txt)");
-                    break;
-                case EXIT:
-                    logger.info(" User completed");
-                    System.exit(0);
-                default:
-                    logger.warn(resourceManager.getString("WRONG_INPUT_INT_DATA"));
-                    bookView.printMessage(resourceManager.getString("WRONG_INPUT_INT_DATA") + "\n");
-                    break;
-            }
+            mainMenuItem.set(bookService, bookView, utility, resourceManager);
+            mainMenuItem.getCommand().execute();
         }
     }
 
@@ -126,7 +69,7 @@ public class Controller {
         }
     }
 
-    private void searchBooksBy(Book[] result, String message, String input) {
+    public static void searchBooksBy(Book[] result, String message, String input,  BooksView bookView,ResourceManager resourceManager) {
         if (result.length == 0) {
             bookView.printMessage(resourceManager.getString("NO_BOOKS") + input);
         } else {

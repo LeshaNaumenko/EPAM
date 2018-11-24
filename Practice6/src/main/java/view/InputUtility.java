@@ -34,7 +34,7 @@ public class InputUtility {
         this.resourceManager = resourceManager;
     }
 
-    public String getPath() {
+    public String  getPath() {
         scanner = new Scanner(System.in);
         booksView.printMessage(resourceManager.getString("ENTER_A_PATH"));
         Pattern compile = Pattern.compile("((\\w{1}:\\\\(([A-z]|[0-9]|\\s)+)\\\\\\w+\\.\\w+))|(\\w{1}:\\\\(\\w+\\.\\w+))");
